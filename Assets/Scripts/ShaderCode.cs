@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 处理卡片视觉效果的着色器控制脚本
-/// 负责随机设置卡片版本并根据父对象旋转更新着色器参数
+/// 负责随机选择卡片版本并根据父对象旋转调整着色器参数
 /// </summary>
 public class ShaderCode : MonoBehaviour
 {
@@ -55,7 +55,7 @@ public class ShaderCode : MonoBehaviour
         xAngle = ClampAngle(xAngle, -90f, 90f);
         yAngle = ClampAngle(yAngle, -90f, 90);
 
-        // 设置着色器中的旋转向量参数
+        // 设置旋转向量参数，将角度映射到着色器所需的范围
         m.SetVector("_Rotation", new Vector2(ExtensionMethods.Remap(xAngle,-20,20,-.5f,.5f), ExtensionMethods.Remap(yAngle, -20, 20, -.5f, .5f)));
 
     }
@@ -63,9 +63,9 @@ public class ShaderCode : MonoBehaviour
     /// <summary>
     /// 将角度限制在最小值和最大值之间
     /// </summary>
-    /// <param name="angle">要限制的角度值</param>
-    /// <param name="min">最小角度限制</param>
-    /// <param name="max">最大角度限制</param>
+    /// <param name="angle">要限制的角度</param>
+    /// <param name="min">最小角度值</param>
+    /// <param name="max">最大角度值</param>
     /// <returns>限制后的角度值</returns>
     float ClampAngle(float angle, float min, float max)
     {
