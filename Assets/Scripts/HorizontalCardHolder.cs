@@ -123,7 +123,6 @@ public class HorizontalCardHolder : MonoBehaviour
             {
                 Destroy(hoveredCard.transform.parent.gameObject);
                 cards.Remove(hoveredCard);
-
             }
         }
 

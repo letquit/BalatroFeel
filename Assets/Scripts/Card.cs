@@ -55,7 +55,7 @@ public class Card : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         if (!instantiateVisual)
             return;
 
-        visualHandler = FindObjectOfType<VisualCardsHandler>();
+        visualHandler = FindAnyObjectByType<VisualCardsHandler>();
         cardVisual = Instantiate(cardVisualPrefab, visualHandler ? visualHandler.transform : canvas.transform).GetComponent<CardVisual>();
         cardVisual.Initialize(this);
     }
